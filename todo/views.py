@@ -34,7 +34,7 @@ def edit_task(request, id):
             return redirect('home')
     else:
         form = TaskForm(instance=task)
-    return render(request, 'todo/create_task.html', {'my_form': form})
+    return render(request, 'todo/edit_task.html', {'my_form': form})
 
 def complete_task(request, id):
     task = get_object_or_404(Task, pk=id)
