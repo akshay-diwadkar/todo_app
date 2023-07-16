@@ -4,12 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Create Task</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
+    {{ my_form.media }}
 </head>
 <body>
-    <h1>Create A New Task!</h1>
-    <form method="POST" class="post-form">{% csrf_token %}
-        {{ my_form.as_p }}        
-        <button type="submit" class="save btn btn-secondary">Save</button>
-    </form>
+    <h2 style="padding: 10px;">Create A New Task!</h2>
+    <div style="margin: auto; width: 40%; border-style: groove; padding: 30px;">
+        <form method="POST" class="post-form">{% csrf_token %}
+            {% bootstrap_form my_form %}     
+            <button type="submit" class="save btn btn-primary">Save</button>
+        </form>
+    </div>
+    <div style="margin-bottom: 20px;"></div>
 </body>
 </html>

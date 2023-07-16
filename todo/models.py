@@ -6,8 +6,8 @@ from django.utils import timezone
 class Task(models.Model):
     title = models.CharField(max_length=200)
     description = models.TextField()
-    start_date = models.DateTimeField(default=timezone.now)
-    end_date = models.DateTimeField(default=timezone.now)
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
     user = models.ForeignKey(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
     is_completed = models.BooleanField(default=False)
 

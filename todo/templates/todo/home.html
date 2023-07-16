@@ -5,10 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <title>Home</title>
+    {% load bootstrap4 %}
+    {% bootstrap_css %}
+    {% bootstrap_javascript jquery='full' %}
 </head>
 <body>
     <h1 style="margin-left: 20px;">ToDo Home Page</h1>
-    <button onclick="window.location.href='/create_task'" style="margin-left: 20px;"> <i class="fa fa-plus"></i> Add A New Task </button>
+    <button class="btn btn-primary" onclick="window.location.href='/create_task'" style="margin-left: 20px;"> <i class="fa fa-plus"></i> Add A New Task </button>
     <div style="border-style: groove; padding: 20px; margin: 20px;">
         <table style="width:100%">
             {% for i in my_data %}
@@ -19,26 +22,37 @@
                         <p>Start date: {{i.start_date}}</p>
                         <p>End date: {{i.end_date}}</p>
                         <p>By: {{i.user}}</p>
-                        <p>Task Completion status: {{i.is_completed}}</p>
-                    </td>
-                    <td style="border:1px solid black; text-align: center;">
-                        <button onclick="window.location.href='/complete_task/{{i.id}}'"> <i class="fa fa-check"></i> 
+                        <p>Task Status: 
                             {% if i.is_completed %}
-                            Mark as Incomplete
+                                Completed
                             {% else %}
-                            Mark as Completed
+                                Pending
                             {% endif %}
-                        </button>
+                        </p>
                     </td>
                     <td style="border:1px solid black; text-align: center;">
-                        <button onclick="window.location.href='/edit_task/{{i.id}}'"> <i class="fa fa-edit"></i> Edit This Task</button>
+                        {% if i.is_completed %}
+                            <button onclick="window.location.href='/complete_task/{{i.id}}'" class="btn btn-secondary"> <i class="fa fa-check"></i> 
+                                Mark as Incomplete
+                            </button>
+                        {% else %}
+                            <button onclick="window.location.href='/complete_task/{{i.id}}'" class="btn btn-warning"> <i class="fa fa-check"></i> 
+                                Mark as Completed
+                            </button>
+                        {% endif %}
                     </td>
                     <td style="border:1px solid black; text-align: center;">
-                        <button onclick="window.location.href='/delete_task/{{i.id}}'"> <i class="fa fa-trash"></i> Delete This Task</button>
+                        <button onclick="window.location.href='/edit_task/{{i.id}}'" class="btn btn-success"> <i class="fa fa-edit"></i> Edit This Task</button>
+                    </td>
+                    <td style="border:1px solid black; text-align: center;">
+                        <button onclick="window.location.href='/delete_task/{{i.id}}'" class="btn btn-danger"> <i class="fa fa-trash"></i> Delete This Task</button>
                     </id>
                 </tr>
-                {% endfor %}
+            {% endfor %}
         </table>
+        {% if not my_data %}
+            <h5 style="margin: auto;">No Tasks Added Yet!</h5>
+        {% endif %}
     </div>
 </body>
 </html>
