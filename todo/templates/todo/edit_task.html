@@ -10,7 +10,7 @@
     {{ my_form.media }}
 </head>
 <body>
-    <h2>Edit An Existing Task!</h2>
+    <h2 style="padding: 10px;">Edit An Existing Task!</h2>
     <div style="margin: auto; width: 40%; border-style: groove; padding: 30px;">
         <form method="POST" class="post-form">{% csrf_token %}
             {% bootstrap_form my_form %}     

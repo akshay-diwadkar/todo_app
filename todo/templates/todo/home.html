@@ -12,11 +12,11 @@
 <body>
     <h1 style="margin-left: 20px;">ToDo Home Page</h1>
     <button class="btn btn-primary" onclick="window.location.href='/create_task'" style="margin-left: 20px;"> <i class="fa fa-plus"></i> Add A New Task </button>
-    <div style="border-style: groove; padding: 20px; margin: 20px;">
+    <div style="border-style: groove; border-radius: 30px; padding: 20px; margin: 20px;">
         <table style="width:100%">
             {% for i in my_data %}
             <tr style="margin: auto;">
-                    <td style="width:60%;border:1px solid black; padding: 20px;">
+                    <td style="width:60%; border:1px solid black; border-radius: 30px; padding: 20px;">
                         <h3>{{i.title}}</h3>
                         <p>{{i.description}}</p>
                         <p>Start date: {{i.start_date}}</p>
@@ -33,7 +33,7 @@
                     <td style="border:1px solid black; text-align: center;">
                         {% if i.is_completed %}
                             <button onclick="window.location.href='/complete_task/{{i.id}}'" class="btn btn-secondary"> <i class="fa fa-check"></i> 
-                                Mark as Incomplete
+                                Mark as Pending
                             </button>
                         {% else %}
                             <button onclick="window.location.href='/complete_task/{{i.id}}'" class="btn btn-warning"> <i class="fa fa-check"></i> 
@@ -42,10 +42,11 @@
                         {% endif %}
                     </td>
                     <td style="border:1px solid black; text-align: center;">
-                        <button onclick="window.location.href='/edit_task/{{i.id}}'" class="btn btn-success"> <i class="fa fa-edit"></i> Edit This Task</button>
+                        <button onclick="window.location.href='/edit_task/{{i.id}}'" class="btn btn-success"> <i class="fa fa-edit"></i> Edit Task</button>
                     </td>
                     <td style="border:1px solid black; text-align: center;">
-                        <button onclick="window.location.href='/delete_task/{{i.id}}'" class="btn btn-danger"> <i class="fa fa-trash"></i> Delete This Task</button>
+                        <button onclick="window.location.href='/delete_task/{{i.id}}'
+                        alert('Task Was Successfully Deleted')" class="btn btn-danger"> <i class="fa fa-trash"></i> Delete Task</button>
                     </id>
                 </tr>
             {% endfor %}
