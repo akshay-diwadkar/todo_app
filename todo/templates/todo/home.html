@@ -12,10 +12,10 @@
 <body>
     <h1 style="margin-left: 20px;">ToDo Home Page</h1>
     <button class="btn btn-primary" onclick="window.location.href='/create_task'" style="margin-left: 20px;"> <i class="fa fa-plus"></i> Add A New Task </button>
-    <div style="border-style: groove; border-radius: 30px; padding: 20px; margin: 20px;">
-        <table style="width:100%">
+    <div class="card" style="border-style: groove; border-radius: 30px; padding: 20px; margin: 20px;">
+        <table class="table">
             {% for i in my_data %}
-            <tr style="margin: auto;">
+            <tr class="card" style="margin: auto;">
                     <td style="width:60%; border:1px solid black; border-radius: 30px; padding: 20px;">
                         <h3>{{i.title}}</h3>
                         <p>{{i.description}}</p>
